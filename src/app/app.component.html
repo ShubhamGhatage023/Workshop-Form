@@ -4,17 +4,148 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recative Forms</title>
+  <title>Workshop Registration</title>
 </head>
 <body>
+  
   <div class="container-fluid">
     <h1 style="text-align: center;" class="bg-success p-3 text-white">Workshop Registration Form</h1>
     <hr size="2" color="black">
     <br>
+
+    <div style="text-align: center;">
+    <h5>Join the 3-day developement virtual workshop and become a hirable freelancer.</h5>
+    <h5>Participation fee : Rs. 400</h5>
+    <h5>Limited slots!Reserve now!</h5>
+    <br><br>
+    </div>
+    <h5 style="text-align: center;">Virtual workshop schedule</h5>
+    <table style="width:900px;" class="table table-striped text-center border mx-auto">
+       <tbody>
+        <tr>
+          <td>May 1-3</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+        <tr>
+          <td>May 15-18</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+        <tr>
+          <td>June 1-3</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+        <tr>
+          <td>June 15-18</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+        <tr>
+          <td>July 1-3</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+        <tr>
+          <td>July 15-18</td>
+          <td>9.00 AM-1.00 PM EST</td>
+        </tr>
+      </tbody>
+    </table>
+    <br><br>
+
     <form [formGroup]="resgistrationForm" (ngSubmit)="onSubmit()" class="container bg-muted m-6">
 
+      <label><b>How will you rate yourself :</b></label>
+      <div>
+        <input type="radio" value="1" formControlName="rate">
+        <label>&ensp;I dont have any idea at all</label>
+      </div>
+
+      <div>
+        <input type="radio" value="2" formControlName="rate">
+        <label>&ensp;I'm a newbie in web devlopemnt and programming</label>
+      </div>
+      <div>
+        <input type="radio"  value="3" formControlName="rate">
+        <label>&ensp;I have watched tutorials online</label>
+      </div>
+      <div>
+        <input type="radio" value="4" formControlName="rate">
+        <label>&ensp;I have a web development related working experience</label>
+      </div>
+      <div>
+        <input type="radio" value="5" formControlName="rate">
+        <label>&ensp;I'm currently working as a web-developer and wants to improve my skills</label>
+      </div><br>
+
+      <label><b>I'd like to learn about following :</b></label>
+
+      <div class="row">
+        <div class="col-sm-6">
+            <input type="radio" value="HTML" formControlName="learn">
+            <label>&ensp;HTML</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="radio" value="CSS" formControlName="learn">
+            <label>&ensp;CSS</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio"  value="JavaScript" formControlName="learn">
+        <label>&ensp;JavaScript</label>
+        </div>
+        <div class="col-sm-6">
+        <input type="radio" value="PHP" formControlName="learn">
+        <label>&ensp;PHP</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="Database" formControlName="learn">
+        <label>&ensp;Database</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="Wordpress" formControlName="learn">
+        <label>&ensp;Wordpress</label>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="Ruby" formControlName="learn">
+        <label>&ensp;Ruby</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="Python" formControlName="learn">
+        <label>&ensp;Python</label>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="Front-end" formControlName="learn">
+        <label>&ensp;Front-end Devlopement</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="Back-end" formControlName="learn">
+        <label>&ensp;Back-end Devlopement</label>
+      </div>
+      </div>
+
+
+
+<!--
+      <div class="form-group" >
+        <div class="row">
+          <div class="col-sm-6" *ngFor="let techn of Tech">
+          <label>
+            <input type="checkbox" [value]="techn.tech" (change)="onCheckboxChange($event)">
+            {{techn.tech}}
+          </label>
+          </div>
+        </div>
+      </div><br>-->
+
+      <h3 class="bg-primary p-1 text-white">Participant Information</h3>
+
       <div class="form-group">
-        <label>Full Name : </label>
+        <label><b>Full Name : </b></label>
         <input type="text" pattern="^[A-Za-z]+ [A-Za-z]+$" [class.is-invalid]="resgistrationForm.get('fullName').invalid &&
         resgistrationForm.get('fullName').touched" formControlName="fullName" class="form-control" placeholder="Enter username">
         <div *ngIf="resgistrationForm.get('fullName').invalid && resgistrationForm.get('fullName').touched">
@@ -24,7 +155,7 @@
       </div>
 
       <div class="form-group">
-        <label>Phone : </label>
+        <label><b>Phone : </b></label>
         <input type="tel" pattern="^[0-9]{10}$" [class.is-invalid]="resgistrationForm.get('phone').invalid &&
         resgistrationForm.get('phone').touched" formControlName="phone" class="form-control" placeholder="Enter phone number">
         <div *ngIf="resgistrationForm.get('phone').invalid && resgistrationForm.get('phone').touched">
@@ -34,7 +165,7 @@
       </div>
 
       <div class="form-group">
-        <label>Email :</label>
+        <label><b> Email :</b></label>
         <input type="text" pattern="^[A-Za-z0-9]+[@][A-Za-z]+[.][A-Za-z]+$" [class.is-invalid]="resgistrationForm.get('email').invalid &&
         resgistrationForm.get('email').touched" formControlName="email" class="form-control" placeholder="Enter e-mail">
         <div *ngIf="resgistrationForm.get('email').invalid && resgistrationForm.get('email').touched">
@@ -43,7 +174,7 @@
         </div>
       </div>
 
-        <label>Address :</label><br>
+        <label><b>Address :</b></label><br>
         <div class="form-group">
           <input type="text" [class.is-invalid]="resgistrationForm.get('street').invalid && resgistrationForm.get('street').touched" formControlName="street" class="form-control" placeholder="Enter Street">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('street').valid || resgistrationForm.get('street').untouched">Street is required</small> 
@@ -53,52 +184,117 @@
           <small class="text-danger" [class.d-none]="resgistrationForm.get('city').valid || resgistrationForm.get('city').untouched">City is required</small> 
         </div>
         <div class="form-group">
-          <input type="text" [class.is-invalid]="resgistrationForm.get('state').invalid && resgistrationForm.get('state').touched" formControlName="street" class="form-control" placeholder="Enter Street">
+          <input type="text" [class.is-invalid]="resgistrationForm.get('state').invalid && resgistrationForm.get('state').touched" formControlName="state" class="form-control" placeholder="Enter State">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('state').valid || resgistrationForm.get('state').untouched">State is required</small> 
         </div>
         <div class="form-group">
-          <input type="text" [class.is-invalid]="resgistrationForm.get('postalcode').invalid && resgistrationForm.get('postalcode').touched" formControlName="postalcode" class="form-control" placeholder="Enter City">
+          <input type="text" [class.is-invalid]="resgistrationForm.get('postalcode').invalid && resgistrationForm.get('postalcode').touched" formControlName="postalcode" class="form-control" placeholder="Enter Postalcode">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('postalcode').valid || resgistrationForm.get('postalcode').untouched">Postalcode is required</small> 
         </div>   
 
       <div class="form-group">
-        <label>Occupation :</label>
-        <input type="text" [class.is-invalid]="resgistrationForm.get('occupation').invalid && resgistrationForm.get('occupation').touched" formControlName="occupation" class="form-control" placeholder="Enter Street">
+        <label><b>Occupation :</b></label>
+        <input type="text" [class.is-invalid]="resgistrationForm.get('occupation').invalid && resgistrationForm.get('occupation').touched" formControlName="occupation" class="form-control" placeholder="Enter Occupation">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('occupation').valid || resgistrationForm.get('occupation').untouched">Occupation is required</small> 
       </div>
 
       <div class="form-group">
-        <label>Comapny Name :</label>
-        <input type="text" [class.is-invalid]="resgistrationForm.get('company').invalid && resgistrationForm.get('company').touched" formControlName="company" class="form-control" placeholder="Enter Street">
+        <label><b>Comapny Name :</b></label>
+        <input type="text" [class.is-invalid]="resgistrationForm.get('company').invalid && resgistrationForm.get('company').touched" formControlName="company" class="form-control" placeholder="Enter Company name">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('company').valid || resgistrationForm.get('company').untouched">Company is required</small> 
       </div>
 
       <div class="form-group">
-        <label>Job Profile :</label>
-        <input type="text" [class.is-invalid]="resgistrationForm.get('job').invalid && resgistrationForm.get('job').touched" formControlName="job" class="form-control" placeholder="Enter Street">
+        <label><b>Job Profile :</b></label>
+        <input type="text" [class.is-invalid]="resgistrationForm.get('job').invalid && resgistrationForm.get('job').touched" formControlName="job" class="form-control" placeholder="Enter Job Position">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('job').valid || resgistrationForm.get('job').untouched">Job profile is required</small> 
       </div>
 
-      <label>Workshop Dates :</label>
-      <div class="form-group" *ngFor="let CountryData of CountryData">
-        <label>
-          <input type="checkbox" [value]="CountryData.date">
-          {{CountryData.date}}
-        </label>
-      </div>
+      <h3 class="bg-primary p-1 text-white">Payment Information</h3>
+
+      <label><b>Workshop Payment : </b></label><br>
+      <label>
+        <input type="radio" value="paid" formControlName="paid">
+        <span> Participation Fee Rs.400</span>
+      </label>
 
       <div class="form-group">
-        <label>Track : </label>
         <select class="custom-select">
           <option value="default">--Select Payment Method--</option>
           <option *ngFor="let pay of payment">{{pay}}</option>
         </select>
       </div>
 
- 
+      <label><b>Workshop Date :</b></label>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="May 1st-3rd" formControlName="WSdate">
+        <label>&ensp;May 1st-3rd</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="May 15th-18th" formControlName="WSdate">
+        <label>&ensp;May 15th-18th</label>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio"  value="June 1st-3rd" formControlName="WSdate">
+        <label>&ensp;June 1st-3rd</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="June 15th-18th" formControlName="WSdate">
+        <label>&ensp;June 15th-18th</label>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="July 1st-3rd" formControlName="WSdate">
+        <label>&ensp;July 1st-3rd</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="July 15th-18th" formControlName="WSdate">
+        <label>&ensp;July 15th-18th</label>
+      </div>
+      </div>
 
-        
-      <button type="submit" [disabled]="resgistrationForm.invalid" class="btn btn-primary">Submit</button><br>
+      <div class="form-group">
+        <label><b>Any additional comments or information you would like to share?</b></label>
+        <textarea [class.is-invalid]="resgistrationForm.get('comment').invalid && resgistrationForm.get('comment').touched" formControlName="comment" class="form-control" placeholder="Enter comment"></textarea>
+      </div>
+
+      <label><b>How did you learn about this virtual training program</b></label>
+      <div class="row">
+        <div class="col-sm-6">
+            <input type="radio" value="Facebook" formControlName="source">
+            <label>&ensp;Facebook</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="radio" value="Twitter" formControlName="source">
+            <label>&ensp;Twitter</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio"  value="Instagram" formControlName="source">
+        <label>&ensp;Instagram</label>
+        </div>
+        <div class="col-sm-6">
+        <input type="radio" value="YouTube" formControlName="source">
+        <label>&ensp;YouTube</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+        <input type="radio" value="Search Engine" formControlName="source">
+        <label>&ensp;Search Engine</label>
+      </div>
+      <div class="col-sm-6">
+        <input type="radio" value="Online Ads" formControlName="source">
+        <label>&ensp;Online Ads</label>
+      </div>
+      </div><br>
+
+      <button type="submit" [disabled]="resgistrationForm.invalid" class="btn btn-success btn-block">Register Now</button><br>
     </form> 
     
   </div>

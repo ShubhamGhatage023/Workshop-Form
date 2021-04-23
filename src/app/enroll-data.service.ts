@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Employee } from './employee';
 import { HttpClient } from '@angular/common/http';
+import { Participant } from './participant';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class EnrollDataService {
 
   public url=`http://localhost:7000/enrollData`;
 
-  enrollData(Employee){
-    return this.http.post<any>(this.url,Employee);
+  enrollData(part : Participant){
+    return this.http.post<any>(this.url,part);
   }
 
 }

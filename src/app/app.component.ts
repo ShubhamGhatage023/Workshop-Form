@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, FormArray, FormControl,Validators } from '@angular/forms';
 import { EnrollDataService } from './enroll-data.service'; 
 
 @Component({
@@ -13,13 +13,19 @@ export class AppComponent {
 
     payment=["Debit Card","Credit Card","Net Banking"];
 
-    CountryData: Array<any> = [
-      { date: "May 1st-3rd"},
-      { date: "May 15th-18th"},
-      { date: "June 1st-3rd"},
-      { date: "June 15th-18th"},
-      { date: "July 1st-3rd"},
-      { date: "July 1st-3rd"},
+    Tech: Array<any> = [
+      { tech: "HTML"},
+      { tech: "CSS"},
+      { tech: "JavaScript"},
+      { tech: "PHP"},
+      { tech: "Database"},
+      { tech: "WordPress"},
+      { tech: "Ruby on Rails"},
+      { tech: "Python"},
+      { tech: "DevOps"},
+      { tech: "Web Security"},
+      { tech: "Front-End Devlopement"},
+      { tech: "Back-End Devlopement"}
     ];
 
     public resgistrationForm = this.fb.group({
@@ -33,14 +39,35 @@ export class AppComponent {
       occupation: ["",Validators.required],
       company: ["",Validators.required],
       job: ["",Validators.required],
-      checkArray: this.fb.array([])
+      comment : [""],
+      paid : ["unpaid"],
+      rate : [""],
+      WSdate : [""],
+      source: [""],
+      learn : [""] //this.fb.array([])
     });
 
 
+    onCheckboxChange(e) {
+      const checkArray1: FormArray = this.resgistrationForm.get('learn') as FormArray;
+      if (e.target.checked) {
+        checkArray1.push(new FormControl(e.target.value));
+      } else {
+        let i: number = 0;
+        checkArray1.controls.forEach((item: FormControl) => {
+          if (item.value == e.target.value) {
+            checkArray1.removeAt(i);
+            return;
+          }
+          i++;
+        });
+      }
+    }
+
     onSubmit(){
-        this.myService.enrollData(this.resgistrationForm.value).subscribe(
-          data => console.log("Success!",data),
-          error => console.log("Error!",error)
-        );
+      this.myService.enrollData(this.resgistrationForm.value).subscribe(
+        data => console.log("Success!",data),
+        error => console.log("Error!",error)
+      );
     }
 }
