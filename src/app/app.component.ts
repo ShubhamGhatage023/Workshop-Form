@@ -12,6 +12,8 @@ export class AppComponent {
     constructor(private fb : FormBuilder, private myService : EnrollDataService){}
 
     payment=["Debit Card","Credit Card","Net Banking"];
+     
+    submit=0;
 
     Tech: Array<any> = [
       { tech: "HTML"},
@@ -66,7 +68,7 @@ export class AppComponent {
 
     onSubmit(){
       this.myService.enrollData(this.resgistrationForm.value).subscribe(
-        data => console.log("Success!",data),
+        data => console.log("Success!",data,this.submit=1),
         error => console.log("Error!",error)
       );
     }
