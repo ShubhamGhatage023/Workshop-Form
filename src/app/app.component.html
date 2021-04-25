@@ -23,27 +23,27 @@
     <table style="width:900px;" class="table table-striped text-center border mx-auto">
        <tbody>
         <tr>
-          <td>May 1-3</td>
+          <td>May 1st - 3rd</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
         <tr>
-          <td>May 15-18</td>
+          <td>May 15th - 18th</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
         <tr>
-          <td>June 1-3</td>
+          <td>June 1st - 3rd</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
         <tr>
-          <td>June 15-18</td>
+          <td>June 15th - 18th</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
         <tr>
-          <td>July 1-3</td>
+          <td>July 1st - 3rd</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
         <tr>
-          <td>July 15-18</td>
+          <td>July 15th - 18th</td>
           <td>9.00 AM-1.00 PM EST</td>
         </tr>
       </tbody>
@@ -51,8 +51,8 @@
     <br><br>
 
     <form [formGroup]="resgistrationForm" (ngSubmit)="onSubmit()" class="container bg-muted m-6">
-
-      <label><b>How will you rate yourself :</b></label>
+      <div *ngIf="submit==0">
+      <label><b>How will you rate yourself<span class="text-danger">*</span> ?</b></label>
       <div>
         <input type="radio" value="1" formControlName="rate">
         <label>&ensp;I dont have any idea at all</label>
@@ -73,9 +73,10 @@
       <div>
         <input type="radio" value="5" formControlName="rate">
         <label>&ensp;I'm currently working as a web-developer and wants to improve my skills</label>
-      </div><br>
+      </div>
+      <br>
 
-      <label><b>I'd like to learn about following :</b></label>
+      <label><b>I'd like to learn about following<span class="text-danger">*</span> ?</b></label>
 
       <div class="row">
         <div class="col-sm-6">
@@ -126,7 +127,7 @@
         <input type="radio" value="Back-end" formControlName="learn">
         <label>&ensp;Back-end Devlopement</label>
       </div>
-      </div>
+      </div><br>
 
 <!--
       <div class="form-group" >
@@ -143,7 +144,7 @@
       <h3 class="bg-primary p-1 text-white">Participant Information</h3>
 
       <div class="form-group">
-        <label><b>Full Name : </b></label>
+        <label><b>Full Name<span class="text-danger">*</span> : </b></label>
         <input type="text" pattern="^[A-Za-z]+ [A-Za-z]+$" [class.is-invalid]="resgistrationForm.get('fullName').invalid &&
         resgistrationForm.get('fullName').touched" formControlName="fullName" class="form-control" placeholder="Enter username">
         <div *ngIf="resgistrationForm.get('fullName').invalid && resgistrationForm.get('fullName').touched">
@@ -153,7 +154,7 @@
       </div>
 
       <div class="form-group">
-        <label><b>Phone : </b></label>
+        <label><b>Phone<span class="text-danger">*</span> : </b></label>
         <input type="tel" pattern="^[0-9]{10}$" [class.is-invalid]="resgistrationForm.get('phone').invalid &&
         resgistrationForm.get('phone').touched" formControlName="phone" class="form-control" placeholder="Enter phone number">
         <div *ngIf="resgistrationForm.get('phone').invalid && resgistrationForm.get('phone').touched">
@@ -163,7 +164,7 @@
       </div>
 
       <div class="form-group">
-        <label><b> Email :</b></label>
+        <label><b> Email<span class="text-danger">*</span> :</b></label>
         <input type="text" pattern="^[A-Za-z0-9]+[@][A-Za-z]+[.][A-Za-z]+$" [class.is-invalid]="resgistrationForm.get('email').invalid &&
         resgistrationForm.get('email').touched" formControlName="email" class="form-control" placeholder="Enter e-mail">
         <div *ngIf="resgistrationForm.get('email').invalid && resgistrationForm.get('email').touched">
@@ -172,45 +173,47 @@
         </div>
       </div>
 
-        <label><b>Address :</b></label><br>
+        <label><b>Address<span class="text-danger">*</span> :</b></label><br>
         <div class="form-group">
           <input type="text" [class.is-invalid]="resgistrationForm.get('street').invalid && resgistrationForm.get('street').touched" formControlName="street" class="form-control" placeholder="Enter Street">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('street').valid || resgistrationForm.get('street').untouched">Street is required</small> 
         </div>
-        <div class="form-group">
+        <div class="form-row">
+        <div class="form-group col-md-5">
           <input type="text" [class.is-invalid]="resgistrationForm.get('city').invalid && resgistrationForm.get('city').touched" formControlName="city" class="form-control" placeholder="Enter City">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('city').valid || resgistrationForm.get('city').untouched">City is required</small> 
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-4">
           <input type="text" [class.is-invalid]="resgistrationForm.get('state').invalid && resgistrationForm.get('state').touched" formControlName="state" class="form-control" placeholder="Enter State">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('state').valid || resgistrationForm.get('state').untouched">State is required</small> 
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3">
           <input type="text" [class.is-invalid]="resgistrationForm.get('postalcode').invalid && resgistrationForm.get('postalcode').touched" formControlName="postalcode" class="form-control" placeholder="Enter Postalcode">
           <small class="text-danger" [class.d-none]="resgistrationForm.get('postalcode').valid || resgistrationForm.get('postalcode').untouched">Postalcode is required</small> 
         </div>   
+      </div>
 
       <div class="form-group">
-        <label><b>Occupation :</b></label>
+        <label><b>Occupation<span class="text-danger">*</span> :</b></label>
         <input type="text" [class.is-invalid]="resgistrationForm.get('occupation').invalid && resgistrationForm.get('occupation').touched" formControlName="occupation" class="form-control" placeholder="Enter Occupation">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('occupation').valid || resgistrationForm.get('occupation').untouched">Occupation is required</small> 
       </div>
 
       <div class="form-group">
-        <label><b>Comapny Name :</b></label>
+        <label><b>Comapny Name<span class="text-danger">*</span> :</b></label>
         <input type="text" [class.is-invalid]="resgistrationForm.get('company').invalid && resgistrationForm.get('company').touched" formControlName="company" class="form-control" placeholder="Enter Company name">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('company').valid || resgistrationForm.get('company').untouched">Company is required</small> 
       </div>
 
       <div class="form-group">
-        <label><b>Job Profile :</b></label>
+        <label><b>Job Profile<span class="text-danger">*</span> :</b></label>
         <input type="text" [class.is-invalid]="resgistrationForm.get('job').invalid && resgistrationForm.get('job').touched" formControlName="job" class="form-control" placeholder="Enter Job Position">
         <small class="text-danger" [class.d-none]="resgistrationForm.get('job').valid || resgistrationForm.get('job').untouched">Job profile is required</small> 
-      </div>
+      </div><br>
 
       <h3 class="bg-primary p-1 text-white">Payment Information</h3>
 
-      <label><b>Workshop Payment : </b></label><br>
+      <label><b>Workshop Payment<span class="text-danger">*</span> : </b></label><br>
       <label>
         <input type="radio" value="paid" formControlName="paid">
         <span> Participation Fee Rs.400</span>
@@ -223,7 +226,7 @@
         </select>
       </div>
 
-      <label><b>Workshop Date :</b></label>
+      <label><b>Workshop Date<span class="text-danger">*</span> :</b></label>
       <div class="row">
         <div class="col-sm-6">
         <input type="radio" value="May 1st-3rd" formControlName="WSdate">
@@ -256,11 +259,11 @@
       </div>
 
       <div class="form-group">
-        <label><b>Any additional comments or information you would like to share?</b></label>
+        <label><b>Any additional comments or information you would like to share ?</b></label>
         <textarea [class.is-invalid]="resgistrationForm.get('comment').invalid && resgistrationForm.get('comment').touched" formControlName="comment" class="form-control" placeholder="Enter comment"></textarea>
       </div>
 
-      <label><b>How did you learn about this virtual training program</b></label>
+      <label><b>How did you learn about this virtual training program<span class="text-danger">*</span> ?</b></label>
       <div class="row">
         <div class="col-sm-6">
             <input type="radio" value="Facebook" formControlName="source">
@@ -292,9 +295,14 @@
       </div>
       </div><br>
 
-      <button type="submit" [disabled]="resgistrationForm.invalid" class="btn btn-success btn-block">Register Now</button><br>
+      <div class="text-center">
+        <button type="submit" [disabled]="resgistrationForm.invalid" class="btn btn-success m-3" style="width: 400px;">Register Now</button><br>
+      </div>
+      
+    </div>
+    <div *ngIf="submit==1">
       <br><h5 *ngIf="submit==1" class="text-success" style="text-align: center;">Registered Successfully!</h5>
-    
+    </div>
     </form> 
     
   </div>

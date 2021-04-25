@@ -15,7 +15,7 @@ export class AppComponent {
      
     submit=0;
 
-    Tech: Array<any> = [
+    /*Tech: Array<any> = [
       { tech: "HTML"},
       { tech: "CSS"},
       { tech: "JavaScript"},
@@ -28,7 +28,7 @@ export class AppComponent {
       { tech: "Web Security"},
       { tech: "Front-End Devlopement"},
       { tech: "Back-End Devlopement"}
-    ];
+    ];*/
 
     public resgistrationForm = this.fb.group({
       fullName : ["",[Validators.required,Validators.pattern]],
@@ -42,11 +42,11 @@ export class AppComponent {
       company: ["",Validators.required],
       job: ["",Validators.required],
       comment : [""],
-      paid : ["unpaid"],
-      rate : [""],
-      WSdate : [""],
-      source: [""],
-      learn : [""] //this.fb.array([])
+      paid : ["unpaid",Validators.required],
+      rate : ["",Validators.required],
+      WSdate : ["",Validators.required],
+      source: ["",Validators.required],
+      learn : ["",Validators.required] //this.fb.array([])
     });
 
 
@@ -67,9 +67,10 @@ export class AppComponent {
     }
 
     onSubmit(){
-      this.myService.enrollData(this.resgistrationForm.value).subscribe(
+      /*this.myService.enrollData(this.resgistrationForm.value).subscribe(
         data => console.log("Success!",data,this.submit=1),
         error => console.log("Error!",error)
-      );
+      );*/this.submit=1;
+      console.log(this.resgistrationForm.value);
     }
 }
