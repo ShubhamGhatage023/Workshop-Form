@@ -67,7 +67,7 @@ export class AppComponent {
     }
 
     onSubmit(){
-      this.myService.enrollData(this.resgistrationForm.value).subscribe(
+     this.myService.enrollData(this.resgistrationForm.value).subscribe(
         data => console.log("Success!",data,this.submit=1),
         error => console.log("Error!",error)
       );

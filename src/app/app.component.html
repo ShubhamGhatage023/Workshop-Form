@@ -300,9 +300,12 @@
       </div>
       
     </div>
-    <div *ngIf="submit==1">
-      <br><h5 *ngIf="submit==1" class="text-success" style="text-align: center;">Registered Successfully!</h5>
-    </div>
+      <br><div *ngIf="submit==1" class="text-center" >
+        <h3 class="text-success">Registered Successfully !</h3><br>
+        <h5 class="text-secondary">Name : {{resgistrationForm.get('fullName').value}}<br>
+        E-Mail : {{resgistrationForm.get('email').value}}<br>
+        Phone : {{resgistrationForm.get('phone').value}}<br></h5>
+      </div><br>
     </form> 
     
   </div>
